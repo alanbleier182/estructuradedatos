@@ -1,0 +1,72 @@
+#include <iostream>
+
+using namespace std;
+
+void ceros(int n);
+void convertir(int numero, int count);
+void digitosHex(int n);
+
+int MAX_DIGITS = 5;
+
+int main (int argc, const char * argv[]){
+ 
+    int numero;
+    
+    cout << "Entre el número a convertir ";
+    cin >> numero;
+    
+    cout << numero << " En hexagecimal es = ";
+    convertir(numero, 8);
+    cout << endl;
+ 
+    return 1;   
+}
+
+void convertir(int numero, int count){
+    
+    //caso base
+    if(numero<16){
+        ceros(count);
+        digitosHex(numero);
+    } else {
+        convertir(numero/16, count + 1);
+        digitosHex(numero%16);
+    }
+}
+
+void ceros(int digitos) {
+    
+        int looper;
+        int final = MAX_DIGITS-digitos;
+
+        for(looper=1; looper<=final; looper++) 
+            cout << "0";
+}
+
+void digitosHex(int digit) {
+	
+	if (digit < 10){
+	    cout << digit;
+
+	} else {
+	    switch (digit) {
+	        case 10:
+		    cout << "A";
+		    break;	
+	        case 11:
+		    cout << "B";
+		    break;	
+	        case 12:
+		    cout << "C";
+		    break;
+	        case 13:
+		    cout << "D";
+		    break;
+	        case 14:
+		    cout << "E";
+		    break;
+	        default:
+	            cout << "F";
+	        }
+	    }
+    }
